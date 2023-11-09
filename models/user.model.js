@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    privateProjectsCount: {
+        type: Number,
+        default: 0
+    },
     settings: {
         notificationPreferences: {
             email: Boolean,

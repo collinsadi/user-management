@@ -17,6 +17,7 @@
    - 3.9. User Follow another User
    - 3.10. User Unfollow  User
    - 3.11. User Check Following
+   - 3.12. User Profile
 4. Data Schema
    - 4.1. User Data Structure
 5. Security Measures
@@ -366,6 +367,66 @@
     "message": "Invalid User Id",
     "error_code": 422,
     "error_details": "Ther User Id Provided by the client is Invalid"
+    }
+    ```
+
+
+### 3.12. User Profile 
+- **Endpoint:** GET `/api/V1/users/profile?user=`
+- **Description:** Enables Users to View a Users Profile with username 
+- **Request Query:**
+    ```json
+    {
+        "user": "username"
+    }
+    ```
+- **Response (Success):**
+    ```json
+    {
+    "status": true,
+    "user": {
+        "_id": "654bcef958c69ccd2c4c4ab2",
+        "username": "user_name",
+        "firstName": "John",
+        "lastName": "Doe",
+        "country": "United States",
+        "badges": [],
+        "followers": [
+            {
+                "_id": "654bd21e73f0fad0db5d31ff",
+                "username": "user_name12"
+            }
+        ],
+        "following": [
+            {
+                "_id": "654bcf3c58c69ccd2c4c4ab9",
+                "username": "user_name1"
+            }
+        ],
+        "followersCount": 1,
+        "followingCount": 1,
+        "projectsCount": 1,
+        "createdAt": "2023-11-08T18:10:01.180Z"
+        }
+    }
+    ```
+
+
+- **Response (Error):**
+    ```json
+    {
+    "status": false,
+    "message": "Account Disabled",
+    "error_code": 400,
+    "error_details": "Account Permanently or Temporarily Disabled"
+    }
+    ```
+    ```json
+    {
+    "status": false,
+    "message": "User Not Found",
+    "error_code": 400,
+    "error_details": "the username Provided by the Client is not Associated with any user"
     }
     ```
 

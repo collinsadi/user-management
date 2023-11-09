@@ -302,10 +302,14 @@ const getUserProfile = async (request, response) => {
         return response.status(400).json(handleError(400, "Username Missing", "Users Username is missing"))
         }
 
-        const user = await User.findOne({ username }).populate("followers following", "username profilePicture").sort({ createdAt: -1 })
+        const user = await User.findOne({ username }, { passwordHash: 0, email: 0, validated: 0, privateProjectsCount: 0, updatedAt: 0, __v: 0 }).populate("followers following", "username profilePicture").sort({ createdAt: -1 })
         
         if (!user) {
         return response.status(400).json(handleError(400, "User Not Found", "the username Provided by the Client is not Associated with any user"))
+        }
+
+        if (user.blocked) {
+            return response.status(400).json(handleError(400, "Account Disabled", "Account Permanently or Temporarily Disabled"))
         }
 
         response.status(200).json({status:true, user})
