@@ -1,0 +1,39 @@
+{
+  "name": "user-management-service",
+  "version": "1.0.0",
+  "description": "User Management MicroService for Codellins",
+  "main": "index.js",
+  "engines": {
+    "node":"18.x"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codellins/user-management.git"
+  },
+  "keywords": [
+    "codellins",
+    "user-management",
+    "editor"
+  ],
+  "author": "Collins Adi",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/codellins/user-management/issues"
+  },
+  "homepage": "https://github.com/codellins/user-management#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "colors": "^1.4.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.1.0",
+    "mongoose": "^7.6.3",
+    "nodemailer": "^6.9.6",
+    "shortid": "^2.2.16",
+    "ws": "^8.14.2"
+  }
+}
