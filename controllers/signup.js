@@ -23,8 +23,9 @@ try{
     if (username.split(" ").length > 1) {
         return response.status(422).json(handleError(422, "Do not use spaces in usernames", "The Username sent by the client contains white spaces"))
     }
-    if (username.includes("/")) {
-        return response.status(422).json(handleError(422, "Invalid username Format", "The Username sent by the client contains an invalid character '/" ))
+	 let regExp = /\p{P}/gu;
+    if (regExp.test(username)) {
+        return response.status(422).json(handleError(422, "Invalid username Format", "The Username sent by the client contains an invalid character " ))
     }
     if (!email) {
         return response.status(422).json(handleError(422, "Email is Required", "The Client Did not send the email in the request body"))
